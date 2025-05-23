@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kalpak Bari | Developer Portfolio</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.0/dist/full.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+  <style>
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+    #tsparticles {
+      position: fixed;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+    }
+    .hidden-fall {
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.6s ease-in;
+    }
+    .selected-expand {
+      transform: scale(1.1);
+      transition: all 0.4s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-purple-100 text-gray-800 font-sans">
+
+<!-- Particle Background -->
+<div id="tsparticles"></div>
+<script>
+  tsParticles.load("tsparticles", {
+    fullScreen: { enable: false },
+    particles: {
+      number: { value: 60 },
+      size: { value: 3 },
+      move: { enable: true, speed: 0.6 },
+      line_linked: { enable: true, opacity: 0.2 }
+    },
+    interactivity: {
+      events: {
+        onhover: { enable: true, mode: "repulse" }
+      }
+    }
+  });
+</script>
+
+<!-- Toggle -->
+<div class="absolute top-4 right-4 z-10">
+  <label class="swap swap-rotate">
+    <input type="checkbox" class="theme-controller" value="dark"/>
+    <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64 17.36A9 9 0 1117.36 5.64 9 9 0 015.64 17.36z"/></svg>
+    <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2v2m6.364 1.636l-1.414 1.414M20 12h-2m-1.636 6.364l-1.414-1.414M12 20v-2M5.636 18.364l1.414-1.414M4 12H2m1.636-6.364l1.414 1.414"/></svg>
+  </label>
+</div>
+
+<header class="text-center py-8 bg-white shadow-xl rounded-b-3xl">
+  <h1 class="text-5xl font-extrabold text-blue-600 tracking-wide animate-pulse">🚀 Kalpak's Web Dev Journey</h1>
+  <p class="text-lg text-gray-500 mt-2">Assignment Day 5</p>
+</header>
+
+<section class="max-w-3xl mx-auto p-8 bg-white shadow-xl rounded-3xl mt-10 space-y-6">
+  <!-- Profile -->
+  <div class="text-center">
+    <img src="https://kalpakbari45.github.io/assets/img/perfil.jpg" alt="Kalpak Bari" class="w-36 h-36 rounded-full mx-auto mb-4 border-4 border-blue-500 shadow-md hover:scale-105 transition-transform duration-300" />
+    <h2 class="text-2xl font-semibold">Kalpak Bari</h2>
+    <p class="text-gray-600">📧 barikalpak@gmail.com | 📱 +91-9322891424</p>
+    <p class="mt-2">
+      <a href="https://github.com/KalpakBari45" target="_blank" class="text-blue-600 hover:underline font-medium">GitHub</a> |
+      <a href="https://linkedin.com/in/kalpakbari" target="_blank" class="text-blue-600 hover:underline font-medium">LinkedIn</a>
+    </p>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div id="nav-buttons" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <a href="https://kalpakbari45.github.io" class="btn btn-primary btn-wide day-btn">Day 1</a>
+    <a href="https://kalpakbari45.github.io" class="btn btn-secondary btn-wide day-btn">Day 2</a>
+    <a href="https://kalpakbari45.github.io" class="btn btn-accent btn-wide day-btn">Day 3</a>
+    <a href="https://kalpakbari45web-github-oi.vercel.app" class="btn btn-info btn-wide day-btn">Day 4</a>
+    <a href="day5/index.html" class="btn btn-success btn-wide day-btn">Day 5</a>
+  </div>
+</section>
+
+<!-- Share Buttons -->
+<section class="text-center mt-10">
+  <p class="text-lg font-semibold text-gray-700">🔗 Share my site:</p>
+  <div class="mt-4 space-x-3">
+    <a href="https://twitter.com/intent/tweet?text=Check out this awesome portfolio!&url=https://kalpakbari45.github.io" target="_blank" class="btn btn-outline btn-info">Twitter</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://kalpakbari45.github.io" target="_blank" class="btn btn-outline btn-primary">Facebook</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://kalpakbari45.github.io" target="_blank" class="btn btn-outline btn-secondary">LinkedIn</a>
+  </div>
+</section>
+
+<footer class="text-center text-sm text-gray-500 py-6 mt-12">
+  &copy; 2025 Kalpak Bari. All rights reserved.
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll(".day-btn");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      buttons.forEach(btn => {
+        if (btn !== button) {
+          btn.classList.add("hidden-fall");
+        } else {
+          btn.classList.add("selected-expand");
+        }
+      });
+
+      // Optional: Redirect after animation
+      setTimeout(() => {
+        window.location.href = button.href;
+      }, 800);
+    });
+  });
+</script>
+
+</body>
+</html>
+
